@@ -502,7 +502,7 @@ static NSDictionary* org_apache_cordova_contacts_defaultFields = nil;
                             if ((valueAB == nil) || ![val isEqualToString:valueAB]) {
                                 ABMultiValueReplaceValueAtIndex(multi, (__bridge CFTypeRef)val, i);
                             }
-                            if ((labelAB == nil) || ![label isEqualToString:labelAB]) {
+                            if ((labelAB == nil) || (![label isEqualToString:@"_$!<Other>!$_"] && ![label isEqualToString:labelAB])) {
                                 ABMultiValueReplaceLabelAtIndex(multi, (__bridge CFStringRef)label, i);
                             }
                         }
@@ -1437,7 +1437,7 @@ static NSDictionary* org_apache_cordova_contacts_defaultFields = nil;
 {
     BOOL bArray = NO;
     NSObject* value = [dict objectForKey:key];
-    
+
     if (value) {
         bArray = [value isKindOfClass:[NSArray class]];
     }
@@ -1556,7 +1556,7 @@ static NSDictionary* org_apache_cordova_contacts_defaultFields = nil;
 {
     BOOL bNumber = NO;
     NSObject* value = [dict objectForKey:key];
-    
+
     if (value) {
         bNumber = [value isKindOfClass:[NSNumber class]];
     }
